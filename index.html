@@ -1,0 +1,1015 @@
+<title>Vishesh Devgan Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: left-anchored editorial column; work shown as wide rows with drawn UI "screens"; case study = summary card, then decisions told in order. */
+:root{
+  --paper:#f6f7f9; --surface:#ffffff; --ink:#141a2b; --ink-2:#4a5368; --line:#dde1ea;
+  --accent:#e2901b; --accent-ink:#8a5200; --accent-soft:#fcefd9;
+  --ui-1:#e7ebf3; --ui-2:#c9d1e0; --ui-old:#d9d4c7; --ui-old-2:#b9b19c;
+  --display:"Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --body:"Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0f1320; --surface:#171c2c; --ink:#eef0f6; --ink-2:#a3abc0; --line:#2a3147;
+  --accent:#f2a93b; --accent-ink:#f6c370; --accent-soft:#2c2414;
+  --ui-1:#232a3e; --ui-2:#38415c; --ui-old:#3a3628; --ui-old-2:#58523d; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --paper:#0f1320; --surface:#171c2c; --ink:#eef0f6; --ink-2:#a3abc0; --line:#2a3147;
+  --accent:#f2a93b; --accent-ink:#f6c370; --accent-soft:#2c2414;
+  --ui-1:#232a3e; --ui-2:#38415c; --ui-old:#3a3628; --ui-old-2:#58523d; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--body);
+  padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px))}
+.wrap{max-width:1120px;margin:0 auto}
+a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);line-height:1.08;text-wrap:balance;margin:0;letter-spacing:-.02em}
+p{margin:0}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.draft{background:var(--accent-soft);color:var(--accent-ink);font:500 13px/1.4 var(--mono);padding:10px 14px;border-radius:10px;margin-top:16px}
+
+/* nav */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}
+.mark{font:800 18px/1 var(--display);text-decoration:none;display:flex;align-items:center;gap:10px}
+.mark i{width:12px;height:12px;border-radius:3px;background:var(--accent);display:inline-block}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:22px;flex-wrap:wrap;font-weight:500;font-size:15px}
+nav a{text-decoration:none}
+nav a:hover{color:var(--accent-ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600;font-size:15px;padding:12px 18px;border-radius:999px;border:0;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+
+/* hero */
+.hero{padding-block:72px 56px;display:grid;gap:28px}
+.hero h1{font-size:clamp(44px,7.4vw,96px);font-weight:800;max-width:14ch}
+.hero h1 em{font-style:normal;color:var(--accent-ink);position:relative}
+.hero .lede{font-size:clamp(18px,2vw,21px);color:var(--ink-2);max-width:56ch}
+.hero .row{display:flex;gap:12px;flex-wrap:wrap}
+.status{display:inline-flex;align-items:center;gap:8px;font:500 13px/1 var(--mono);color:var(--ink-2)}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:#2fa66a;box-shadow:0 0 0 4px color-mix(in srgb,#2fa66a 22%,transparent)}
+
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.facts div{padding:22px 20px 22px 0;display:grid;gap:6px}
+.facts div+div{padding-left:20px;border-left:1px solid var(--line)}
+.facts b{font:800 clamp(28px,3.4vw,40px)/1 var(--display);font-variant-numeric:tabular-nums}
+.facts span{color:var(--ink-2);font-size:15px}
+
+/* work rows */
+.section{padding-block:72px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:32px}
+.section-head h2{font-size:clamp(30px,4vw,44px)}
+.work{display:grid;gap:22px}
+.case{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;text-decoration:none;transition:transform .25s ease, border-color .25s}
+.case:hover{transform:translateY(-3px);border-color:var(--ink-2)}
+.case .txt{padding:32px;display:grid;gap:14px;align-content:start}
+.case h3{font-size:clamp(26px,2.8vw,34px)}
+.case p{color:var(--ink-2)}
+.tags{display:flex;gap:8px;flex-wrap:wrap}
+.tags span{font:500 12px/1 var(--mono);padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:var(--ink-2)}
+.result{border-top:1px dashed var(--line);padding-top:14px;display:flex;gap:10px;align-items:baseline}
+.result b{font:800 22px/1 var(--display);color:var(--accent-ink)}
+.more{font-weight:600;color:var(--ink)}
+.case .art{background:var(--ui-1);min-height:300px;display:grid;place-items:center;padding:28px;position:relative}
+.soon{opacity:.85}
+
+/* drawn screens */
+.screen{width:100%;max-width:440px;aspect-ratio:16/10;background:var(--surface);border-radius:10px;box-shadow:0 18px 40px -18px rgba(10,20,40,.35);display:grid;grid-template-columns:22% 1fr;overflow:hidden;border:1px solid var(--line)}
+.screen .side{background:var(--ink);opacity:.92;display:grid;align-content:start;gap:7px;padding:12px 9px}
+.screen .side i{height:7px;border-radius:4px;background:var(--paper);opacity:.35}
+.screen .side i.on{background:var(--accent);opacity:1}
+.screen .main{padding:12px;display:grid;gap:8px;align-content:start}
+.bar{height:8px;border-radius:4px;background:var(--ui-2)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.cards i{height:44px;border-radius:7px;background:var(--ui-1);border:1px solid var(--line)}
+.cards i:first-child{background:var(--accent-soft);border-color:var(--accent)}
+.rows i{display:block;height:9px;border-radius:4px;background:var(--ui-1);margin-bottom:6px}
+.doc{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.doc .page{background:var(--ui-1);border-radius:6px;height:120px;position:relative;border:1px solid var(--line)}
+.doc .page::after{content:"";position:absolute;left:14%;top:28%;width:58%;height:16%;border:2px solid var(--accent);border-radius:4px;background:color-mix(in srgb,var(--accent) 14%,transparent)}
+.phone{width:150px;aspect-ratio:9/18;background:var(--surface);border-radius:22px;border:1px solid var(--line);box-shadow:0 18px 40px -18px rgba(10,20,40,.35);padding:12px 10px;display:grid;gap:8px;align-content:start}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cal i{aspect-ratio:1;border-radius:3px;background:var(--ui-1)}
+.cal i.moon{background:var(--accent)}
+.pill{height:24px;border-radius:999px;background:var(--ink)}
+
+/* about / contact */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:40px;align-items:start}
+.photo{aspect-ratio:4/5;border-radius:var(--r);background:repeating-linear-gradient(135deg,var(--ui-1) 0 12px,var(--surface) 12px 24px);border:1px dashed var(--ui-2);display:grid;place-items:center;text-align:center;color:var(--ink-2);font:500 13px/1.4 var(--mono);padding:16px}
+.about h2{font-size:clamp(28px,3.4vw,40px);margin-bottom:18px}
+.about p+p{margin-top:14px}
+.about p{max-width:62ch;color:var(--ink-2)}
+.contact{background:var(--ink);color:var(--paper);border-radius:22px;padding:56px clamp(24px,5vw,64px);display:grid;gap:22px;margin-bottom:56px}
+.contact h2{font-size:clamp(34px,5vw,60px);max-width:16ch}
+.contact .eyebrow{color:color-mix(in srgb,var(--paper) 70%,transparent)}
+.contact .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.email{font:500 clamp(17px,2vw,22px)/1.2 var(--mono);user-select:all}
+.contact .btn{background:var(--accent);color:#1b1300}
+.contact .btn.ghost{background:transparent;color:var(--paper);border-color:color-mix(in srgb,var(--paper) 35%,transparent)}
+footer{padding-block:0 40px;color:var(--ink-2);font-size:14px}
+
+/* case study */
+.cs-hero{padding-block:56px 32px;display:grid;gap:22px}
+.back{font-weight:600;text-decoration:none;color:var(--ink-2)}
+.back:hover{color:var(--ink)}
+.cs-hero h1{font-size:clamp(40px,6.4vw,80px);font-weight:800;max-width:16ch}
+.cs-hero .lede{font-size:clamp(18px,2vw,21px);color:var(--ink-2);max-width:58ch}
+.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.summary div{padding:22px;display:grid;gap:8px;align-content:start}
+.summary div+div{border-left:1px solid var(--line)}
+.summary p{font-size:15px}
+.summary .out b{font:800 30px/1 var(--display);color:var(--accent-ink);font-variant-numeric:tabular-nums}
+.prose{max-width:66ch;display:grid;gap:16px}
+.prose h2{font-size:clamp(28px,3.4vw,40px)}
+.prose p{color:var(--ink-2)}
+.pains{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:8px}
+.pains div{border-top:3px solid var(--ink);padding-top:14px;display:grid;gap:6px}
+.pains b{font-family:var(--display);font-size:20px}
+.pains span{color:var(--ink-2);font-size:15px}
+.pains.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1000px){.pains.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.compare{margin-top:28px;display:grid;gap:12px;max-width:820px}
+.ba{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);user-select:none}
+.ba .pane{position:absolute;inset:0;display:grid;grid-template-columns:20% 1fr;padding:0}
+.ba .old{background:var(--ui-old)}
+.ba .old .side{background:var(--ui-old-2);display:grid;align-content:start;gap:4px;padding:10px}
+.ba .old .side i{height:12px;background:var(--ui-old);border:1px solid var(--ink-2);opacity:.6}
+.ba .old .main{padding:10px;display:grid;gap:4px;align-content:start}
+.ba .old .main i{height:14px;border:1px solid var(--ink-2);opacity:.45;background:var(--surface)}
+.ba .old .main i:nth-child(3n){width:70%}
+.ba .new{background:var(--surface);clip-path:inset(0 0 0 var(--cut,50%))}
+.ba .new .side{background:var(--ink);display:grid;align-content:start;gap:10px;padding:18px 14px}
+.ba .new .side i{height:10px;border-radius:5px;background:var(--paper);opacity:.3}
+.ba .new .side i.on{background:var(--accent);opacity:1}
+.ba .new .main{padding:22px;display:grid;gap:14px;align-content:start}
+.ba .new .cards i{height:clamp(40px,8vw,80px)}
+.ba .handle{position:absolute;top:0;bottom:0;left:var(--cut,50%);width:2px;background:var(--accent);pointer-events:none}
+.ba .handle::after{content:"";position:absolute;top:50%;left:50%;width:34px;height:34px;transform:translate(-50%,-50%);border-radius:50%;background:var(--accent);box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.ba .lbl{position:absolute;bottom:12px;font:500 12px/1 var(--mono);padding:7px 10px;border-radius:999px;background:var(--ink);color:var(--paper)}
+.ba .lbl.l{left:12px}.ba .lbl.r{right:12px;background:var(--accent);color:#1b1300}
+.compare input{width:100%;accent-color:var(--accent)}
+.caption{font:400 13px/1.5 var(--mono);color:var(--ink-2)}
+
+.decisions{display:grid;gap:18px;margin-top:8px;counter-reset:d}
+.decision{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;align-items:center}
+.decision .n{font:500 13px/1 var(--mono);color:var(--accent-ink)}
+.decision h3{font-size:clamp(22px,2.4vw,28px);margin:10px 0 12px}
+.decision p{color:var(--ink-2)}
+.decision .vis{background:var(--ui-1);border-radius:10px;min-height:200px;display:grid;place-items:center;padding:20px}
+.flow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center}
+.flow span{font:500 12px/1 var(--mono);padding:9px 11px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.flow span.on{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-ink)}
+.flow em{font-style:normal;color:var(--ink-2)}
+.contrast{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:300px}
+.contrast div{border-radius:8px;padding:16px 12px;font:600 15px/1.2 var(--body);display:grid;gap:6px}
+.contrast small{font:500 11px/1 var(--mono);opacity:.85}
+.c-bad{background:#d9d4c7;color:#9a9480}
+.c-good{background:#141a2b;color:#ffffff}
+.tokens{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:100%;max-width:300px}
+.tokens i{aspect-ratio:1;border-radius:8px;border:1px solid var(--line)}
+
+.video{aspect-ratio:16/9;border-radius:var(--r);background:var(--ink);color:var(--paper);display:grid;place-items:center;text-align:center;gap:10px;padding:24px;margin-top:8px}
+.video .play{width:64px;height:64px;border-radius:50%;background:var(--accent);display:grid;place-items:center;margin:0 auto}
+.video .play::after{content:"";border-left:18px solid #1b1300;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
+.video p{font:500 13px/1.5 var(--mono);opacity:.8;max-width:44ch}
+
+.results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:8px}
+.results div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:grid;gap:8px}
+.results b{font:800 clamp(30px,3.6vw,44px)/1 var(--display);font-variant-numeric:tabular-nums}
+.results .tbd b{color:var(--ink-2)}
+.results span{color:var(--ink-2);font-size:15px}
+blockquote{margin:0;font:600 clamp(24px,3vw,34px)/1.25 var(--display);letter-spacing:-.01em;border-left:4px solid var(--accent);padding-left:22px;max-width:30ch}
+.next{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--line);padding-block:32px 56px}
+.next a{font:800 clamp(22px,2.6vw,30px)/1.1 var(--display);text-decoration:none}
+
+/* signature: scroll-scrubbed redesign */
+.stage{--p:0;height:150vh;position:relative}
+.stage-in{position:sticky;top:calc(env(safe-area-inset-top,0px) + 64px);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(24px,4vw,56px);align-items:center;min-height:calc(100vh - 64px);padding-block:32px}
+.stage .hero{padding-block:0}
+.stage .hero h1{font-size:clamp(42px,5.6vw,80px)}
+.tidy-fig{margin:0;display:grid;grid-template-columns:minmax(0,1fr);gap:14px;position:relative;min-width:0}
+.tidy{position:relative;aspect-ratio:16/10;max-width:100%;container-type:size;border-radius:14px;overflow:hidden;
+  background:color-mix(in srgb,var(--surface) calc(var(--p)*100%),var(--ui-old));
+  border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(10,20,40,.45)}
+.tidy b{position:absolute;display:block;
+  border-radius:calc(1px + var(--p)*var(--r2,5px));
+  background:color-mix(in srgb,var(--c) calc(var(--p)*100%),var(--oc,var(--ui-old-2)));
+  border:1px solid color-mix(in srgb,transparent calc(var(--p)*100%),var(--ink-2));
+  transform:translate(calc(var(--dx)*(1 - var(--p))*1cqw),calc(var(--dy)*(1 - var(--p))*1cqh)) rotate(calc(var(--rot)*(1 - var(--p))*1deg)) scale(calc(1 + var(--s)*(1 - var(--p))))}
+.tidy b.junk{opacity:calc(1 - var(--p)*1.7);background:var(--ui-old-2);border-radius:1px}
+.tidy-cap{display:flex;align-items:center;gap:12px;font:500 12px/1 var(--mono);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.tidy-cap #tidy-label{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#tidy-pct{white-space:nowrap}
+.meter{flex:1;height:4px;border-radius:2px;background:var(--line);overflow:hidden;min-width:40px}
+.meter i{display:block;height:100%;width:calc(var(--p)*100%);background:var(--accent)}
+.hint{font:500 12px/1 var(--mono);color:var(--accent-ink);opacity:calc(1 - var(--p)*3)}
+.facts{margin-top:8px}
+@media (prefers-reduced-motion:reduce){.stage{height:auto;--p:1}.stage-in{position:static;min-height:0}.hint{display:none}}
+
+
+/* case study media */
+.shot{margin:0;display:grid;gap:10px;min-width:0}
+.shot img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line);background:#fff;cursor:zoom-in}
+.shot img.tall{max-height:460px;width:auto;max-width:100%;margin:0 auto;object-fit:contain}
+.shot figcaption{font:400 13px/1.5 var(--mono);color:var(--ink-2)}
+.shot.wide{margin-top:28px}
+.frame{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--surface);box-shadow:0 24px 50px -30px rgba(10,20,40,.4)}
+.frame .chrome{display:flex;gap:6px;padding:10px 12px;background:var(--ui-1)}
+.frame .chrome i{width:9px;height:9px;border-radius:50%;background:var(--ui-2)}
+.frame img{border:0;border-radius:0}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+.decision .shot{align-self:center}
+.personas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-block:24px 8px}
+.persona{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:grid;grid-template-columns:auto 1fr;gap:14px 16px;align-items:center}
+.persona .ph{width:52px;height:52px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center;font:800 17px/1 var(--display)}
+.persona b{display:block;font:700 20px/1.2 var(--display)}
+.persona span{color:var(--ink-2);font-size:14px}
+.persona p{grid-column:1/-1;color:var(--ink-2);font-size:15px}
+.persona em{font-style:normal;font-weight:600;color:var(--ink)}
+.stats{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:14px}
+.stats li{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:baseline;border-top:1px solid var(--line);padding-top:12px}
+.stats b{font:800 28px/1 var(--display);color:var(--accent-ink);font-variant-numeric:tabular-nums}
+.stats span{color:var(--ink-2);font-size:15px}
+.after-results{margin-top:18px;color:var(--ink-2);max-width:66ch}
+.after-results a{font-weight:600;color:var(--accent-ink)}
+.reflect{color:var(--ink-2);max-width:62ch;margin-top:18px}
+.reflect strong{color:var(--ink)}
+dialog#lightbox{border:0;padding:16px;background:var(--surface);border-radius:16px;max-width:min(1200px,94vw);max-height:92vh;display:none}
+dialog#lightbox[open]{display:grid;gap:12px;justify-items:end}
+dialog#lightbox img{max-width:100%;max-height:78vh;object-fit:contain;border-radius:8px}
+dialog#lightbox::backdrop{background:rgba(8,12,24,.75)}
+@media (max-width:820px){.two,.split,.personas{grid-template-columns:1fr}}
+
+@media (max-width:820px){
+  .stage{height:auto}
+  .stage-in{position:static;display:block;min-height:0;padding-block:24px 0}
+  .stage-in::after{content:"";display:block;height:45vh}
+  .tidy-fig{position:sticky;top:calc(env(safe-area-inset-top,0px) + 110px);margin-top:22px}
+  .stage .hero .lede{font-size:17px}
+  .case,.about,.decision{grid-template-columns:1fr}
+  .summary{grid-template-columns:1fr 1fr}
+  .summary div:nth-child(3){border-left:0}
+  .summary div:nth-child(n+3){border-top:1px solid var(--line)}
+  .pains,.pains.four,.results{grid-template-columns:1fr}
+  .about .photo{max-width:260px}
+}
+.menu-btn{display:none;font:600 14px/1 var(--body);background:transparent;color:var(--ink);border:1.5px solid var(--line);border-radius:999px;padding:9px 14px;cursor:pointer}
+@media (max-width:600px){
+  nav .wrap{flex-wrap:nowrap;position:relative}
+  .menu-btn{display:inline-flex}
+  nav ul{display:none;position:absolute;top:100%;right:0;left:0;flex-direction:column;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:6px;box-shadow:0 20px 40px -20px rgba(10,20,40,.35)}
+  nav.open ul{display:flex}
+  nav ul a{display:block;padding:14px 12px;font-size:17px;border-radius:10px}
+  nav ul a:hover{background:var(--ui-1)}
+  .tidy-fig{top:calc(env(safe-area-inset-top,0px) + 76px)}
+}
+@media (max-width:520px){
+  .facts{grid-template-columns:1fr}
+  .facts div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}
+  .summary{grid-template-columns:1fr}
+  .summary div+div{border-left:0;border-top:1px solid var(--line)}
+  .case .txt,.decision{padding:22px}
+  nav ul{gap:14px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@keyframes rise{from{transform:translateY(10px)}to{transform:none}}
+.hero > *, .cs-hero > *{animation:rise .6s ease both}
+.hero > *:nth-child(2){animation-delay:.06s}.hero > *:nth-child(3){animation-delay:.12s}
+
+/* polish v8: fewer labels and boxes */
+:root{--mono:var(--body)}
+.eyebrow{font:600 13px/1.3 var(--body);letter-spacing:0;text-transform:none;color:var(--ink-2)}
+.prose > .eyebrow{display:none}
+.tags span,.caption,.shot figcaption,.decision .n,.tidy-cap,.hint,.status{letter-spacing:0}
+.shot figcaption,.caption{font-size:14px}
+.decision{background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:32px 0}
+.decision .n{font-weight:600;font-size:14px}
+.results div{background:none;border:0;border-top:3px solid var(--ink);border-radius:0;padding:14px 0 0}
+.tagline{font:600 clamp(20px,2.6vw,28px)/1.25 var(--display);color:var(--ink-2);letter-spacing:-.01em;max-width:30ch}
+.case .tagline{font-size:clamp(18px,2vw,21px)}
+.tools{margin-top:16px;color:var(--ink-2);font-size:15px}
+.tools b{color:var(--ink);margin-right:8px}
+.refs{color:var(--ink-2);font-size:15px;padding-bottom:28px}
+.draft{font-family:var(--body)}
+@media (max-width:820px){.decision{padding:24px 0}}
+.case .art{padding:0;min-height:0;background:var(--ui-1)}
+.case .art img{width:100%;height:100%;object-fit:cover;display:block}
+.cover{margin:8px 0 0;border-radius:var(--r);overflow:hidden}
+.cover img{width:100%;height:auto;display:block;aspect-ratio:2/1;object-fit:cover}
+@media (max-width:820px){.case .art{order:-1;aspect-ratio:16/10}.cover img{aspect-ratio:16/10}}
+img.photo{display:block;width:100%;height:auto;object-fit:cover;border:0;background:none;padding:0}
+</style>
+
+<nav>
+  <div class="wrap">
+    <a class="mark" href="#home"><i></i>Vishesh Devgan</a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <ul id="menu">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="Vishesh-Devgan-Resume.pdf" target="_blank" rel="noopener">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="view-home" class="wrap">
+  <section class="stage" id="stage">
+    <div class="stage-in">
+      <header class="hero">
+        <span class="status">Open to product design roles · Toronto or remote, Canada</span>
+        <h1>I make complex software <em>feel simple.</em></h1>
+        <p class="lede">I'm a product designer in Toronto. I've redesigned a 16-year-old medical records system, designed AI document processing at OpenText, and rebuilt booking and payments for a global spiritual platform.</p>
+        <div class="row">
+          <a class="btn" href="#work">See my work</a>
+          <a class="btn ghost" href="Vishesh-Devgan-Resume.pdf" target="_blank" rel="noopener">Download resume</a>
+        </div>
+      </header>
+      <figure class="tidy-fig">
+        <div class="tidy" id="tidy" role="img" aria-label="A cluttered legacy interface that rearranges itself into a clean, organized dashboard as you scroll"></div>
+        <figcaption class="tidy-cap">
+          <span id="tidy-label">Legacy EMR · built 2004</span>
+          <span class="meter"><i></i></span>
+          <span id="tidy-pct">Redesign 0%</span>
+        </figcaption>
+        <span class="hint" aria-hidden="true">Scroll to redesign ↓</span>
+      </figure>
+    </div>
+  </section>
+
+  <div class="facts" aria-label="At a glance">
+    <div><b>500+</b><span>screens I designed in one EMR</span></div>
+    <div><b>87%</b><span>user-testing satisfaction on my EMR redesign</span></div>
+    <div><b>35+</b><span>rituals I made bookable online for a global audience</span></div>
+  </div>
+
+  <section class="section" id="work">
+    <div class="section-head">
+      <h2>Selected work</h2>
+      <span class="eyebrow">2020 – now</span>
+    </div>
+    <div class="work">
+      <a class="case" href="#emr">
+        <div class="txt">
+          <span class="eyebrow">Healthcare · Design team lead</span>
+          <h3>EMR modernization</h3>
+          <p class="tagline">A 16-year-old medical records system, redesigned</p>
+          <div class="tags"><span>User research</span><span>Design system</span><span>Accessibility</span></div>
+          <div class="result"><b>87%</b><span>average satisfaction in user testing</span></div>
+          <span class="more">Read case study →</span>
+        </div>
+        <div class="art"><img src="img/cover-emr.webp" alt="" width="1200" height="750" loading="lazy"></div>
+      </a>
+
+      <a class="case" href="#bhakti">
+        <div class="txt">
+          <span class="eyebrow">Education non-profit · Project lead · In progress</span>
+          <h3>Bhakti Academy master site</h3>
+          <p class="tagline">One site for every city, and a front door for temples</p>
+          <div class="tags"><span>Information architecture</span><span>User flows</span><span>Project lead</span></div>
+          <div class="result"><b>Feb 2027</b><span>launch, wireframes in review</span></div>
+          <span class="more">Read case study →</span>
+        </div>
+        <div class="art"><img src="img/cover-bhakti.webp" alt="" width="1200" height="750" loading="lazy"></div>
+      </a>
+
+      <a class="case" href="#linga">
+        <div class="txt">
+          <span class="eyebrow">Consumer platform · Isha Foundation</span>
+          <h3>Linga Bhairavi</h3>
+          <p class="tagline">Rituals booked online, for a global audience</p>
+          <div class="tags"><span>Booking & payments</span><span>Mobile</span><span>Team lead</span></div>
+          <div class="result"><b>35+</b><span>rituals now bookable and payable online</span></div>
+          <span class="more">Read case study →</span>
+        </div>
+        <div class="art"><img src="img/cover-linga.webp" alt="" width="1200" height="750" loading="lazy"></div>
+      </a>
+
+      <a class="case" href="#opentext">
+        <div class="txt">
+          <span class="eyebrow">Enterprise SaaS · OpenText</span>
+          <h3>OpenText Core Capture</h3>
+          <p class="tagline">Keeping key details in view as documents move</p>
+          <div class="tags"><span>AI product</span><span>Prototyping</span><span>Usability testing</span></div>
+          <div class="result"><b>2</b><span>features taken from research to stakeholder approval</span></div>
+          <span class="more">Read case study →</span>
+        </div>
+        <div class="art"><img src="img/cover-opentext.webp" alt="" width="1200" height="750" loading="lazy"></div>
+      </a>
+    </div>
+  </section>
+
+  <section class="section about" id="about">
+    <img class="photo" src="img/vishesh.webp" alt="Vishesh Devgan" width="640" height="800">
+    <div>
+      <h2>Designer, researcher, and a trained engineer.</h2>
+      <p>I studied computer science and software engineering before moving into design, so I think about how a screen will be built while I design it. That keeps my work feasible and makes handoff to developers smooth.</p>
+      <p>Since 2023 I've also led client research in financial services, designed training programs, and now direct a 20-person team at Bhakti Academy Toronto, where I'm also leading our new multi-city website. Explaining complex products to real people is what I do best, and I'm now returning to product design full time.</p>
+      <p>Outside work: poetry, meditation and running.</p>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <span class="eyebrow">Contact</span>
+    <h2>Hiring a product designer? Let's talk.</h2>
+    <div class="row">
+      <span class="email">vdevgan100@gmail.com</span>
+      <button class="btn" type="button" id="copy-email">Copy email</button>
+      <a class="btn ghost" href="https://www.linkedin.com/in/vdevgan/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="Vishesh-Devgan-Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+    </div>
+  </section>
+  <div style="height:48px" aria-hidden="true"></div>
+</main>
+
+<main id="view-emr" class="wrap" hidden>
+  <header class="cs-hero">
+    <a class="back" href="#work">← All work</a>
+    <span class="eyebrow">Healthcare · Centennial College WIMTACH · Mar – Dec 2020</span>
+    <h1>EMR modernization</h1>
+    <p class="tagline">A 16-year-old medical records system, redesigned</p>
+    <p class="lede">Clinic and hospital staff relied on an EMR whose navigation changed from screen to screen and whose interface looked its age. I led design on a team rebuilding it to be consistent, responsive and accessible.</p>
+    <p class="draft">Draft for review: "What I'd do differently" is my suggestion. Rewrite it in your own words.</p>
+    <figure class="cover"><img src="img/cover-emr.webp" alt="Illustration: a tidy patient chart and appointment calendar" width="1200" height="750"></figure>
+  </header>
+
+  <div class="summary">
+    <div><span class="eyebrow">Problem</span><p>Inconsistent navigation, hard-to-read screens and user complaints across a 1,200+ screen product.</p></div>
+    <div><span class="eyebrow">My role</span><p>Design team lead and UI/UX designer. Research, information architecture, interaction design, testing.</p></div>
+    <div><span class="eyebrow">Team</span><p>Design, development and business analysis. Client under NDA.</p></div>
+    <div class="out"><span class="eyebrow">Outcome</span><b>87%</b><p>average satisfaction in user testing.</p></div>
+  </div>
+  <p class="tools"><b>Tools</b> Adobe XD, Maze</p>
+
+  <section class="section">
+    <div class="prose">
+      <span class="eyebrow">Who we designed for</span>
+      <h2>Two people, two very different days</h2>
+      <p>I interviewed four clinic and hospital staff over Zoom and turned what I heard into two personas. Their frustrations set the priorities for the redesign.</p>
+    </div>
+    <div class="personas">
+      <article class="persona">
+        <div class="ph">LH</div>
+        <div><b>Lucy, front desk</b><span>45 · 18 years running a practice's front office</span></div>
+        <p><em>Needs</em> to return patient calls and leave on time, and to keep the practice running smoothly.</p>
+        <p><em>Frustrated that</em> the fonts are hard to read, and there is too much to enter while patients wait.</p>
+      </article>
+      <article class="persona">
+        <div class="ph">SA</div>
+        <div><b>Salma, physician</b><span>42 · works for her technology, not with it</span></div>
+        <p><em>Needs</em> a paperless practice within two years and clear, quick communication with patients.</p>
+        <p><em>Frustrated by</em> alert fatigue, and by spending 2 to 4 hours a day after work finishing tasks.</p>
+      </article>
+    </div>
+
+    <div class="compare">
+      <div class="ba" id="ba" aria-hidden="true">
+        <div class="pane old"><div class="side"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="main"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        <div class="pane new"><div class="side"><i class="on"></i><i></i><i></i><i></i><i></i></div><div class="main"><div class="bar" style="width:35%"></div><div class="cards"><i></i><i></i><i></i></div><div class="rows"><i></i><i style="width:80%"></i><i style="width:90%"></i><i style="width:60%"></i></div></div></div>
+        <span class="handle"></span>
+        <span class="lbl l">Before</span><span class="lbl r">After</span>
+      </div>
+      <label class="caption" for="ba-range">Illustration: drag to compare the legacy layout with the redesigned structure</label>
+      <input type="range" id="ba-range" min="5" max="95" value="50">
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="prose" style="margin-bottom:24px">
+      <span class="eyebrow">Key decisions</span>
+      <h2>Three choices that shaped the redesign</h2>
+    </div>
+    <div class="decisions">
+      <article class="decision">
+        <div>
+          <span class="n">Decision 1</span>
+          <h3>One clear path from login to booking</h3>
+          <p>The front desk's most common job is finding a patient and booking them. I made the scheduler the home screen and put patient search one step away, with selecting or adding a patient leading straight to booking or demographics.</p>
+        </div>
+        <figure class="shot"><img src="img/emr-flow.webp" alt="User flow: Login, Home (scheduler), Search patient, then select or add a patient, leading to Book appointment or See demographics" loading="lazy" width="525" height="729" class="tall"><figcaption>Main front-desk flow</figcaption></figure>
+      </article>
+      <article class="decision">
+        <div>
+          <span class="n">Decision 2</span>
+          <h3>Readable and accessible by default</h3>
+          <p>"The fonts are hard to read" came up directly in research, and AODA compliance was a project goal. So contrast, type size, labels, hint text and error messages went into the components themselves, and every screen built from them inherits the fix.</p>
+        </div>
+        <figure class="shot"><img src="img/emr-contrast.webp" alt="Contrast comparison: patient notes text in low-contrast grey before, and in dark text that meets WCAG AA after" loading="lazy" width="790" height="350"><figcaption>Text contrast, before and after</figcaption></figure>
+      </article>
+      <article class="decision">
+        <div>
+          <span class="n">Decision 3</span>
+          <h3>A design system so 500+ screens stay consistent</h3>
+          <p>With 1,200+ screens across 25+ modules, consistency could not depend on memory. I maintained the style guide and icon set, built screens from shared components in Axure, and wrote Jira user stories so developers built from the same parts.</p>
+        </div>
+        <figure class="shot"><img src="img/emr-proto-1.webp" alt="Axure workspace with many screens built from shared components" loading="lazy" width="1110" height="639"><figcaption>Screens built from shared components in Axure</figcaption></figure>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="prose" style="margin-bottom:24px">
+      <span class="eyebrow">From paper to prototype</span>
+      <h2>Sketch first, then wire it up</h2>
+      <p>I explored layouts on paper before building clickable prototypes. Below, an early sketch of a collapsible list, and the prototype for the lab reports module.</p>
+    </div>
+    <div class="two">
+      <figure class="shot"><img src="img/emr-sketch.webp" alt="Pen and paper sketch of a menu, header and collapsible list items" loading="lazy" width="1110" height="707"><figcaption>Paper sketch: collapsible list</figcaption></figure>
+      <figure class="shot"><img src="img/emr-proto-2.webp" alt="Axure prototype map of the lab reports module with interactions" loading="lazy" width="1110" height="684"><figcaption>Clickable prototype: lab reports module</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="split">
+      <div class="prose">
+        <span class="eyebrow">Testing</span>
+        <h2>Tested remotely with the people who use it</h2>
+        <p>We ran A/B and usability tests with clinic and hospital staff on Zoom and Maze, read heatmaps to see where attention went, and ran heuristic evaluations before handoff.</p>
+        <ul class="stats">
+          <li><b>83%</b><span>logged in on the expected path the first time; nobody gave up</span></li>
+          <li><b>6.2 / 7</b><span>average rating for how easy it was to search for a patient</span></li>
+        </ul>
+      </div>
+      <figure class="shot"><img src="img/emr-maze.webp" alt="Maze results: ease of patient search rated 6.2 on average; login task 83.3% direct success, 0% gave up" loading="lazy" width="732" height="539"><figcaption>Maze results from 6 testers</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="prose" style="margin-bottom:24px">
+      <span class="eyebrow">Results</span>
+      <h2>What changed</h2>
+    </div>
+    <div class="results">
+      <div><b>87%</b><span>average satisfaction across user testing</span></div>
+      <div><b>500+</b><span>screens I designed, of 1,200+ across 25+ modules</span></div>
+      <div><b>AA</b><span>accessibility target met for AODA compliance</span></div>
+    </div>
+    <p class="after-results">Flows took fewer clicks, the information architecture was rearranged so navigation made sense, and icons, button labels, hint text and error messages were rewritten to be clear.</p>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <span class="eyebrow">What I learned</span>
+    <div style="height:18px"></div>
+    <blockquote>Listening is the most important skill to have in a meeting.</blockquote>
+    <p class="reflect">Leading design across three disciplines taught me that the best decisions came from hearing developers and analysts out before proposing anything. <strong>What I'd do differently:</strong> run a larger round of testing before high fidelity. Four interviews and six testers told us a lot, but more clinicians earlier would have caught issues sooner.</p>
+  </section>
+
+  <p class="refs">References from this project are available on request.</p>
+
+  <div class="next">
+    <span class="eyebrow">Next case study</span>
+    <a href="#bhakti">Bhakti Academy master site →</a>
+  </div>
+</main>
+
+<main id="view-opentext" class="wrap" hidden>
+  <header class="cs-hero">
+    <a class="back" href="#work">← All work</a>
+    <span class="eyebrow">Enterprise SaaS · OpenText · Jan – May 2022</span>
+    <h1>OpenText Core Capture</h1>
+    <p class="tagline">Keeping key details in view as documents move</p>
+    <p class="lede">OpenText Core Capture uses AI to classify scanned documents and pull out their data. As documents moved through the workflow, the people reviewing them kept losing track of critical information tied to specific parts of a page. I designed the features that fix that.</p>
+    <p class="draft">Waiting on Vishesh: did these features ship? Screens are from the prototype and use sample data.</p>
+    <figure class="cover"><img src="img/cover-opentext.webp" alt="Illustration: a document with one highlighted detail and a comment pinned to it" width="1200" height="750"></figure>
+  </header>
+
+  <div class="summary">
+    <div><span class="eyebrow">Problem</span><p>Critical details tied to one part of a document got lost as it moved from stage to stage.</p></div>
+    <div><span class="eyebrow">My role</span><p>UX designer. Research, flows, prototyping, testing and stakeholder reviews.</p></div>
+    <div><span class="eyebrow">Tools</span><p>Axure RP with OpenText's design system, Figma, Zoom for remote research.</p></div>
+    <div class="out"><span class="eyebrow">Outcome</span><b>2</b><p>features taken from research to stakeholder approval.</p></div>
+  </div>
+
+  <section class="section">
+    <div class="prose">
+      <span class="eyebrow">What we heard</span>
+      <h2>Two needs came up in every interview</h2>
+      <p>I interviewed users over Zoom, studied competing capture tools, and grouped the findings with affinity diagrams and journey maps.</p>
+    </div>
+    <div class="pains">
+      <div><b>Classify fast</b><span>Users wanted a quick way to sort scanned documents into the right type.</span></div>
+      <div><b>Pass notes on</b><span>They needed to leave notes for the next person in the workflow, pinned to the exact spot that mattered.</span></div>
+      <div><b>Lost context</b><span>Without that, critical information surfaced at one stage and was gone by the next.</span></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="prose" style="margin-bottom:24px">
+      <span class="eyebrow">Key decisions</span>
+      <h2>Three choices that shaped the feature</h2>
+    </div>
+    <div class="decisions">
+      <article class="decision">
+        <div>
+          <span class="n">Decision 1</span>
+          <h3>Notes live on the document, not beside it</h3>
+          <p>The problem was information tied to one part of a page, so annotations sit on that part. Reviewers can redact, stamp, highlight, add text, draw an arrow or comment, right where the detail is.</p>
+        </div>
+        <figure class="shot"><div class="frame"><div class="chrome"><i></i><i></i><i></i></div><img src="img/ot-annotate.webp" alt="Core Capture prototype: annotate toolbar with redact, stamp, highlight, text, arrow and comment over a scanned statement" loading="lazy" width="1110" height="684"></div><figcaption>Prototype: annotating a scanned statement</figcaption></figure>
+      </article>
+      <article class="decision">
+        <div>
+          <span class="n">Decision 2</span>
+          <h3>Available at the two stages that need it</h3>
+          <p>The workflow runs from scan and import to organize, review and submit. I made annotation reachable from both Organize and Review, the stages where people spot problems and hand work on.</p>
+        </div>
+        <figure class="shot"><img src="img/ot-flow.webp" alt="User flow: Login, Scan and import, Organize, Review, Submit, with Annotate reachable from Organize and Review; annotate tools lead to Save" loading="lazy" width="1110" height="635"><figcaption>Workflow and annotation tools</figcaption></figure>
+      </article>
+      <article class="decision">
+        <div>
+          <span class="n">Decision 3</span>
+          <h3>Built inside OpenText's design system</h3>
+          <p>I designed with the company's existing components rather than inventing new ones. It sped up prototyping, kept the feature consistent with the rest of the product, and made approval and handoff easier.</p>
+        </div>
+        <figure class="shot"><img src="img/ot-toolbar.webp" alt="Annotation toolbar from the prototype with redact, stamp, highlight, text, arrow and comment tools" loading="lazy" width="1000" height="110"><figcaption>Prototype toolbar, built from OpenText's design system</figcaption></figure>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="split">
+      <div class="prose">
+        <span class="eyebrow">From paper to prototype</span>
+        <h2>Starting on paper</h2>
+        <p>The first version of the review screen was a pen sketch: documents across the top, the open page below, annotations on the side. From there I built high-fidelity clickable prototypes in Axure, ran remote A/B and usability tests, and refined the design in stakeholder reviews. Live testing was planned for OpenText World.</p>
+      </div>
+      <figure class="shot"><img src="img/ot-sketch.webp" alt="Pen sketch of the Core Capture review screen with a document strip and annotation panel" loading="lazy" width="1110" height="792"><figcaption>Early paper sketch of the review screen</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="prose" style="margin-bottom:24px">
+      <span class="eyebrow">Results</span>
+      <h2>What changed</h2>
+    </div>
+    <div class="results">
+      <div><b>2</b><span>features approved by stakeholders</span></div>
+      <div><b>6</b><span>annotation tools, pinned to the exact spot on the page</span></div>
+      <div class="tbd"><b>[ ? ]</b><span>Waiting on Vishesh: shipped, or a measured result</span></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <span class="eyebrow">What I learned</span>
+    <div style="height:18px"></div>
+    <blockquote>A well-defined design system saves time and keeps applications consistent.</blockquote>
+    <p class="reflect">Working inside a large company's system taught me to spend my effort on the problem, not on reinventing buttons. <strong>What I'd do differently:</strong> measure how long it takes reviewers to find a flagged detail before and after, so the impact is a number, not just a good feeling.</p>
+  </section>
+
+  <p class="refs">References from this project are available on request.</p>
+
+  <div class="next">
+    <span class="eyebrow">Back to start</span>
+    <a href="#emr">EMR modernization →</a>
+  </div>
+</main>
+
+<main id="view-linga" class="wrap" hidden>
+  <header class="cs-hero">
+    <a class="back" href="#work">← All work</a>
+    <span class="eyebrow">Consumer platform · Isha Foundation · Aug 2022 – Mar 2023</span>
+    <h1>Linga Bhairavi</h1>
+    <p class="tagline">Rituals booked online, for a global audience</p>
+    <p class="lede">The Linga Bhairavi website buried its content, did not work on phones, and most of its rituals could not be booked online. I led UX for a rebuild that now lets people around the world book and pay for rituals from home.</p>
+    <p class="draft">Waiting on Vishesh: a screenshot of the old site for a before-and-after.</p>
+    <figure class="cover"><img src="img/cover-linga.webp" alt="Illustration: moon phases above a calendar with the full moon date picked, and two oil lamps" width="1200" height="750"></figure>
+  </header>
+
+  <div class="summary">
+    <div><span class="eyebrow">Problem</span><p>Information overload, no mobile support, and most rituals only bookable in person.</p></div>
+    <div><span class="eyebrow">My role</span><p>Team lead and UX designer. Research, flows, wireframes, prototypes and testing.</p></div>
+    <div><span class="eyebrow">Goals</span><p>Modernize the site, grow paid services, and reach more people.</p></div>
+    <div class="out"><span class="eyebrow">Outcome</span><b>35+</b><p>rituals now bookable and payable online.</p></div>
+  </div>
+  <p class="tools"><b>Tools</b> Figma</p>
+
+  <section class="section">
+    <div class="prose">
+      <span class="eyebrow">Who we designed for</span>
+      <h2>Seven interviews, two people to design for</h2>
+      <p>I interviewed seven visitors in person at meditation halls, found four groups of users, and focused on the two the site served least well.</p>
+    </div>
+    <div class="personas">
+      <article class="persona">
+        <div class="ph">AM</div>
+        <div><b>Amy, the seeker</b><span>29 · history teacher, New York</span></div>
+        <p><em>Wants</em> meditations centred on the feminine, and to learn about Eastern traditions.</p>
+        <p><em>Struggles</em> to find authentic stories and people who share her interests.</p>
+      </article>
+      <article class="persona">
+        <div class="ph">VS</div>
+        <div><b>Vinay, the devotee</b><span>53 · senior consultant, Mumbai</span></div>
+        <p><em>Wants</em> to book rituals for his family from home, and to know which days are special.</p>
+        <p><em>Frustrated</em> by visiting temple offices and filling in forms every time he books.</p>
+      </article>
+    </div>
+    <figure class="shot wide"><img src="img/lb-flow.webp" alt="Booking flow: Home, Ritual listing, Ritual detail page, Login to Arpanam with calendar form, shopping bag and payment gateway, Success page" loading="lazy" width="1110" height="230"><figcaption>The booking flow, from home page to confirmation</figcaption></figure>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="prose" style="margin-bottom:24px">
+      <span class="eyebrow">Key decisions</span>
+      <h2>Four choices that shaped the site</h2>
+    </div>
+    <div class="decisions">
+      <article class="decision">
+        <div>
+          <span class="n">Decision 1</span>
+          <h3>Booking built around the lunar calendar</h3>
+          <p>People like Vinay book around auspicious lunar dates, so the calendar is the heart of booking: highlighted dates, then a time slot, then in person or online. I tried several versions of the calendar and form before settling on one.</p>
+        </div>
+        <figure class="shot"><img src="img/lb-calendar.webp" alt="Several versions of the ritual booking calendar with date selection, time slots and in-person or online options" loading="lazy" width="1110" height="1073"><figcaption>Booking calendar: versions explored</figcaption></figure>
+      </article>
+      <article class="decision">
+        <div>
+          <span class="n">Decision 2</span>
+          <h3>Designed for phones first</h3>
+          <p>The old site did not work on phones or tablets. I took the navigation from a paper sketch to a wireframe to the final visual design, with each section given a clear image and label.</p>
+        </div>
+        <figure class="shot"><img src="img/lb-mobile-nav.webp" alt="Mobile top menu shown three ways: paper sketch, wireframe, and final visual UI" loading="lazy" width="1110" height="809"><figcaption>Mobile menu: paper, wireframe, final UI</figcaption></figure>
+      </article>
+      <article class="decision">
+        <div>
+          <span class="n">Decision 3</span>
+          <h3>One card style for every ritual</h3>
+          <p>With dozens of rituals, people needed to compare them at a glance. I explored card layouts and chose one that pairs an image with the essentials and a clear booking button.</p>
+        </div>
+        <figure class="shot"><img src="img/lb-cards.webp" alt="Card layout explorations for ritual listings" loading="lazy" width="1110" height="249"><figcaption>Ritual card explorations</figcaption></figure>
+      </article>
+      <article class="decision">
+        <div>
+          <span class="n">Decision 4</span>
+          <h3>Less is more in the payment flow</h3>
+          <p>Payment is where people drop out. I cut the flow to the information people need to decide (date, time, mode and total cost) and nothing else.</p>
+        </div>
+        <figure class="shot"><img src="img/lb-booking-steps.webp" alt="Booking steps: choose a date, choose a time, in person or online, then pay" loading="lazy" width="900" height="280"><figcaption>Booking in four steps</figcaption></figure>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="prose" style="margin-bottom:24px">
+      <span class="eyebrow">Final design</span>
+      <h2>Live at lingabhairavi.org</h2>
+      <p>Wireframes were built in Figma and handed to the visual design team. We ran A/B and usability tests in person, plus heuristic evaluations, before launch.</p>
+    </div>
+    <figure class="shot wide"><div class="frame"><div class="chrome"><i></i><i></i><i></i></div><img src="img/lb-events.webp" alt="Final Linga Bhairavi events section on desktop and mobile" loading="lazy" width="1110" height="801"></div><figcaption>Events section, desktop and mobile</figcaption></figure>
+    <p class="after-results"><a href="https://lingabhairavi.org" target="_blank" rel="noopener">Visit the live site ↗</a></p>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="prose" style="margin-bottom:24px">
+      <span class="eyebrow">Results</span>
+      <h2>What changed</h2>
+    </div>
+    <div class="results">
+      <div><b>35+</b><span>rituals people can now schedule and pay for online</span></div>
+      <div><b>10+</b><span>annual events open for online booking</span></div>
+      <div><b>500+</b><span>articles and videos, now easy to find, plus online lessons</span></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <span class="eyebrow">What I learned</span>
+    <div style="height:18px"></div>
+    <blockquote>Less is more in payment flows.</blockquote>
+    <p class="reflect">We were lucky to have easy access to users, and it showed: every big decision traces back to something we heard at the meditation halls. <strong>What I'd do differently:</strong> track bookings and drop-off from launch day, so the redesign's impact on revenue could be measured, not just seen.</p>
+  </section>
+
+  <p class="refs">References from this project are available on request.</p>
+
+  <div class="next">
+    <span class="eyebrow">Next case study</span>
+    <a href="#opentext">OpenText Core Capture →</a>
+  </div>
+</main>
+
+<main id="view-bhakti" class="wrap" hidden>
+  <header class="cs-hero">
+    <a class="back" href="#work">← All work</a>
+    <span class="eyebrow">Education non-profit · Bhakti Academy · Nov 2026 – Feb 2027 · In progress</span>
+    <h1>Bhakti Academy master site</h1>
+    <p class="tagline">One site for every city, and a front door for temples</p>
+    <p class="lede">Bhakti Academy runs live-in programs in Toronto and Montreal, with more cities planned. Its website was built for one city, students couldn't find dates or costs, and the support office that helps temples start new academies had no home online. I'm leading a single master site that serves every city.</p>
+    <p class="draft">Draft for review: "What I've learned so far" is my suggestion. Rewrite it in your own words.</p>
+    <figure class="cover"><img src="img/cover-bhakti.webp" alt="Illustration: map pins for Toronto and Montreal joined by a route to a next-city pin, with a temple" width="1200" height="750"></figure>
+  </header>
+
+  <div class="summary">
+    <div><span class="eyebrow">Problem</span><p>A one-city site with no dates or costs, nothing for temples, and a blog search engines can't read.</p></div>
+    <div><span class="eyebrow">My role</span><p>Project manager and design lead: information architecture, user flows, key design decisions, branding. I sign off design.</p></div>
+    <div><span class="eyebrow">Team</span><p>Developers (detailed UI and build), city teams, and the BAOGF support office. Weekly reviews.</p></div>
+    <div class="out"><span class="eyebrow">Status</span><b>Feb 2027</b><p>launch target. Structure and flows done; wireframes in review.</p></div>
+  </div>
+  <p class="tools"><b>Tools</b> Claude (AI) for concept wireframes and diagrams, Figma</p>
+
+  <section class="section">
+    <div class="prose">
+      <span class="eyebrow">Constraints</span>
+      <h2>A tight timeline, so structure first</h2>
+      <p>The developers wanted to start building quickly, and the launch date is fixed. Rather than run a full research program, I focused on the parts that are hardest to change later: the site map, the navigation, and the paths to the two most important actions, applying and enquiring.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="prose">
+      <span class="eyebrow">What we heard</span>
+      <h2>People find us on social media and come to the site to act</h2>
+      <p>I drew on my own experience as a former student and now Program Director, feedback gathered from students, staff and temples, and an audit of the current site.</p>
+    </div>
+    <div class="pains four">
+      <div><b>Found on YouTube</b><span>Most people discover Bhakti Academy through a documentary or Instagram, then visit the site only to apply.</span></div>
+      <div><b>No basics</b><span>The current site has no term dates, tuition or schedule, so people message staff to ask.</span></div>
+      <div><b>Temples ask four things</b><span>Who to contact, the budget, how long it takes, and how many rooms they need.</span></div>
+      <div><b>Invisible blog</b><span>Blog posts on the current site can't be read by search engines, so the site brings in no visitors of its own.</span></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="prose" style="margin-bottom:24px">
+      <span class="eyebrow">Key decisions</span>
+      <h2>Four choices that shape the site</h2>
+    </div>
+    <div class="decisions">
+      <article class="decision">
+        <div>
+          <span class="n">Decision 1</span>
+          <h3>Choose your city first, not at the end</h3>
+          <p>Today the site splits by city only at "Join". I structured it as shared content written once, one template every city fills in, and a separate section for temples. Visitors pick a city early, so dates, costs and contacts are always local, and a new city needs content, not a redesign.</p>
+        </div>
+        <figure class="shot"><img src="img/ba-sitemap.webp" alt="Site map: home page leading to three zones. Shared: About, Programs, Blog, FAQ, Contact. Cities template: overview, dates and cost, life here, events, team and contact, apply. BAOGF for temples: what it does, requirements, budget and timeline, process and governance, news, enquire." loading="lazy" width="1640" height="1349"><figcaption>Site map, draft 1</figcaption></figure>
+      </article>
+      <article class="decision">
+        <div>
+          <span class="n">Decision 2</span>
+          <h3>Keep each city's form, design the handoff</h3>
+          <p>Each city relies on its own application form for its back-end data, so replacing the forms wasn't an option. Instead, the site prepares people before the form (dates, cost, eligibility, common questions) and welcomes them back after it with clear next steps.</p>
+        </div>
+        <figure class="shot"><img src="img/ba-flow-student.webp" alt="Student flow: YouTube or Instagram, lands on home or a blog post, picks a city, checks dates and cost, applies on the city form, returns to a confirmation page" loading="lazy" width="1640" height="656"><figcaption>Key flow: a student applies</figcaption></figure>
+      </article>
+      <article class="decision">
+        <div>
+          <span class="n">Decision 3</span>
+          <h3>A separate front door for temples</h3>
+          <p>Temples are a different audience, closer to business clients than students. BAOGF gets its own entry from the home page, and its pages answer the four questions temples ask first before asking them to enquire.</p>
+        </div>
+        <figure class="shot"><img src="img/ba-flow-temple.webp" alt="Temple flow: referral or search, what BAOGF does, requirements, budget and timeline, is it a fit, send an enquiry" loading="lazy" width="1640" height="656"><figcaption>Key flow: a temple enquires</figcaption></figure>
+      </article>
+      <article class="decision">
+        <div>
+          <span class="n">Decision 4</span>
+          <h3>A blog that search engines can read</h3>
+          <p>Instagram and WhatsApp carry most of the conversation today. A global blog of stories from every city, tagged by city and readable by search engines, gives the site its own way to bring people in. Every post ends with "Apply in your city".</p>
+        </div>
+        <figure class="shot"><img src="img/wf-1-home.webp" alt="Home page wireframe, desktop and mobile: choose your city, how it works, stories from every city, and a section for temples, with three annotations" loading="lazy" width="1640" height="1140"><figcaption>Home page wireframe</figcaption></figure>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="prose" style="margin-bottom:24px">
+      <span class="eyebrow">Wireframes</span>
+      <h2>Concept wireframes for the build</h2>
+      <p>I used Claude to turn the site map into concept wireframes for the key screens, desktop and mobile, in days rather than weeks. I then reviewed and refined them in Figma, with a note on each decision, so the developers could start building sooner. Tap any one to enlarge it.</p>
+    </div>
+    <div class="two">
+      <figure class="shot"><img src="img/wf-2-city.webp" alt="City page wireframe for Toronto: key facts, tabs, sticky apply bar" loading="lazy" width="1640" height="1110"><figcaption>City page (Toronto)</figcaption></figure>
+      <figure class="shot"><img src="img/wf-3-dates-apply.webp" alt="Dates, cost and apply wireframe: terms table, tuition, eligibility, apply box, common questions" loading="lazy" width="1640" height="1170"><figcaption>Dates, cost and apply</figcaption></figure>
+      <figure class="shot"><img src="img/wf-4-confirmation.webp" alt="Confirmation wireframe: application sent, next steps, join the community, local stories" loading="lazy" width="1640" height="1070"><figcaption>Confirmation after applying</figcaption></figure>
+      <figure class="shot"><img src="img/wf-5-baogf.webp" alt="BAOGF wireframe for temples: four questions, five-step process, enquiry form" loading="lazy" width="1640" height="1230"><figcaption>For temples (BAOGF)</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="prose" style="margin-bottom:24px">
+      <span class="eyebrow">What's next</span>
+      <h2>Before and after launch</h2>
+    </div>
+    <div class="results">
+      <div><b>Jan</b><span>Test the apply and enquiry flows with 5 people while the developers build</span></div>
+      <div><b>Baseline</b><span>Record applications per city per term now, to compare after launch</span></div>
+      <div><b>Feb</b><span>Launch, then add final screens and results to this case study</span></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <span class="eyebrow">What I've learned so far</span>
+    <div style="height:18px"></div>
+    <blockquote>When the timeline forces shortcuts, get the structure right.</blockquote>
+    <p class="reflect">Pages and colours are easy to change after launch. The site map, the navigation and the paths to applying are not. Leading the project as both manager and designer has also taught me to make design decisions the team can act on the same week.</p>
+  </section>
+
+  <p class="refs">References from this project are available on request.</p>
+
+  <div class="next">
+    <span class="eyebrow">Next case study</span>
+    <a href="#linga">Linga Bhairavi →</a>
+  </div>
+</main>
+
+<dialog id="lightbox" aria-label="Enlarged image"><img alt=""><button type="button" class="btn" id="lb-close">Close</button></dialog>
+
+<script>
+(function(){
+  var home=document.getElementById('view-home'), emr=document.getElementById('view-emr');
+  function route(){
+    var h=location.hash.replace('#','');
+    var views={emr:emr,opentext:document.getElementById('view-opentext'),linga:document.getElementById('view-linga'),bhakti:document.getElementById('view-bhakti')};
+    var isCase=views.hasOwnProperty(h);
+    home.hidden=isCase; for(var k in views){views[k].hidden=(k!==h);}
+    if(isCase){window.scrollTo(0,0)}
+    else if(h){var el=document.getElementById(h); if(el) el.scrollIntoView();}
+  }
+  window.addEventListener('hashchange',route); route();
+
+  /* signature: build the screen from blocks; each has a tidy home and a messy offset */
+  var tidy=document.getElementById('tidy'), stage=document.getElementById('stage');
+  var seed=7; function rnd(a,b){seed=(seed*9301+49297)%233280; return a+(seed/233280)*(b-a)}
+  function blk(x,y,w,h,c,opts){
+    var b=document.createElement('b'); opts=opts||{};
+    b.style.left=x+'%'; b.style.top=y+'%'; b.style.width=w+'%'; b.style.height=h+'%';
+    b.style.setProperty('--c',c);
+    if(opts.oc) b.style.setProperty('--oc',opts.oc);
+    if(opts.r2) b.style.setProperty('--r2',opts.r2);
+    b.style.setProperty('--dx',opts.still?0:rnd(-9,9).toFixed(2));
+    b.style.setProperty('--dy',opts.still?0:rnd(-7,7).toFixed(2));
+    b.style.setProperty('--rot',opts.still?0:rnd(-5,5).toFixed(2));
+    b.style.setProperty('--s',opts.still?0:rnd(-.12,.18).toFixed(3));
+    if(opts.junk) b.className='junk';
+    tidy.appendChild(b);
+  }
+  blk(0,0,20,100,'var(--ink)',{still:1,oc:'var(--ui-old-2)',r2:'0px'});
+  for(var i=0;i<6;i++) blk(3,12+i*9,i===1?14:11+((i*3)%4),3.4,i===1?'var(--accent)':'color-mix(in srgb,var(--paper) 35%,var(--ink))',{oc:'var(--ui-old)'});
+  blk(25,7,26,5,'var(--ui-2)');
+  blk(72,6,23,8,'var(--ui-1)',{r2:'20px'});
+  blk(25,20,21.5,24,'var(--accent-soft)',{r2:'8px'});
+  blk(49,20,21.5,24,'var(--ui-1)',{r2:'8px'});
+  blk(73,20,22,24,'var(--ui-1)',{r2:'8px'});
+  for(var j=0;j<6;j++) blk(25,50+j*7.6,[70,62,70,48,66,56][j],4,'var(--ui-1)');
+  /* clutter that disappears: toolbars, stray dialogs, overflowing tabs */
+  blk(22,2,74,3,'var(--ui-old-2)',{junk:1});
+  blk(56,30,34,30,'var(--ui-old-2)',{junk:1});
+  blk(30,64,22,14,'var(--ui-old-2)',{junk:1});
+  blk(80,52,16,40,'var(--ui-old-2)',{junk:1});
+  blk(3,84,14,10,'var(--ui-old-2)',{junk:1});
+
+  var label=document.getElementById('tidy-label'), pct=document.getElementById('tidy-pct');
+  var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ticking=false;
+  function update(){
+    ticking=false;
+    var p=1;
+    if(!reduce && !home.hidden){
+      var r=stage.getBoundingClientRect(), span, top;
+      if(innerWidth<=820){var f=document.querySelector('.tidy-fig').parentNode.querySelector('.hero'); top=-(r.top+f.offsetHeight); span=innerHeight*0.4;}
+      else{top=-r.top+innerHeight*0.05; span=stage.offsetHeight-innerHeight*0.85;}
+      p=Math.max(0,Math.min(1,top/Math.max(1,span)));
+      p=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+    }
+    stage.style.setProperty('--p',p.toFixed(4));
+    var n=Math.round(p*100);
+    pct.textContent='Redesign '+n+'%';
+    label.textContent=n<50?'Legacy EMR · built 2004':'Redesigned · responsive, accessible';
+  }
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});
+  window.addEventListener('resize',update); window.addEventListener('hashchange',update); update();
+
+  var r=document.getElementById('ba-range'), ba=document.getElementById('ba');
+  function setCut(v){ba.style.setProperty('--cut',v+'%')}
+  r.addEventListener('input',function(){setCut(r.value)});
+  ba.addEventListener('pointermove',function(e){
+    if(e.buttons!==1) return;
+    var b=ba.getBoundingClientRect(); var v=Math.max(5,Math.min(95,(e.clientX-b.left)/b.width*100));
+    r.value=v; setCut(v);
+  });
+  ba.addEventListener('pointerdown',function(e){
+    var b=ba.getBoundingClientRect(); var v=Math.max(5,Math.min(95,(e.clientX-b.left)/b.width*100));
+    r.value=v; setCut(v);
+  });
+
+  var nav=document.querySelector('nav'), mb=document.getElementById('menu-btn');
+  mb.addEventListener('click',function(){var o=nav.classList.toggle('open'); mb.setAttribute('aria-expanded',o); mb.textContent=o?'Close':'Menu'});
+  document.querySelectorAll('#menu a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open'); mb.setAttribute('aria-expanded','false'); mb.textContent='Menu'})});
+
+
+  var dlg=document.getElementById('lightbox'), dimg=dlg.querySelector('img');
+  document.addEventListener('click',function(e){var t=e.target; if(t.matches && t.matches('.shot img')){dimg.src=t.src; dimg.alt=t.alt; try{dlg.showModal()}catch(err){}}});
+  document.getElementById('lb-close').addEventListener('click',function(){dlg.close()});
+  dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()});
+
+  var btn=document.getElementById('copy-email');
+  btn.addEventListener('click',function(){
+    var t='vdevgan100@gmail.com';
+    function done(){btn.textContent='Copied'; setTimeout(function(){btn.textContent='Copy email'},1800)}
+    try{navigator.clipboard.writeText(t).then(done,function(){sel()})}catch(e){sel()}
+    function sel(){var s=document.querySelector('.email'); var rg=document.createRange(); rg.selectNodeContents(s); var w=getSelection(); w.removeAllRanges(); w.addRange(rg); btn.textContent='Press Ctrl+C'}
+  });
+})();
+</script>
